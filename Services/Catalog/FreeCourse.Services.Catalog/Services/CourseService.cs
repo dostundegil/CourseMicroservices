@@ -84,5 +84,19 @@ namespace FreeCourse.Services.Catalog.Services
 
             return Response<CourseDto>.Success(_mapper.Map<CourseDto>(newCourse), 200);
         }
+
+        public async Task<Response<NoContent>> UpdateAsync(CourseUpdateDto courseUpdateDto)
+        {
+            var updateCourse=_mapper.Map<Course>(courseUpdateDto);
+
+            var result = await _courseCollection.FindOneAndReplaceAsync(x => x.Id == courseUpdateDto.Id, updateCourse);
+
+            if (result == null)
+            {
+                return Response<NoContent>.Fail("Course not found", 404);
+            }
+
+            return Response<NoContent>.Success(204);
+        }
     }
 }
