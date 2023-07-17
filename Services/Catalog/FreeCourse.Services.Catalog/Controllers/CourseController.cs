@@ -45,7 +45,13 @@ namespace FreeCourse.Services.Catalog.Controllers
         {
             var response = await _courseService.CreateAsync(courseCreateDto);
             return CreateActionResultInstance(response);
+        }
 
+        [HttpPut]
+        public async Task<IActionResult> Update(CourseUpdateDto courseUpdateDto)
+        {
+            var response = await _courseService.UpdateAsync(courseUpdateDto);
+            return CreateActionResultInstance(response);
         }
     }
 }
