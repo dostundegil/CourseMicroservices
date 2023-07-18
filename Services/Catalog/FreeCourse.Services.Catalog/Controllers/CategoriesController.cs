@@ -16,11 +16,20 @@ namespace FreeCourse.Services.Catalog.Controllers
         {
             _categoryService = categoryService;
         }
-
+        //Added GetAll metgod to CategiroesController
         public async Task<IActionResult> GetAll()
         {
             var categories = await _categoryService.GetAllAsync();
             return CreateActionResultInstance(categories);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(string id)
+        {
+            var category = await _categoryService.GetById(id);
+            return CreateActionResultInstance(category);
+        }
+
+
     }
 }
