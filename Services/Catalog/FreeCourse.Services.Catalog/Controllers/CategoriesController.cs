@@ -17,7 +17,7 @@ namespace FreeCourse.Services.Catalog.Controllers
         {
             _categoryService = categoryService;
         }
-        //Added GetById method to CategiroesController
+
         public async Task<IActionResult> GetAll()
         {
             var categories = await _categoryService.GetAllAsync();
