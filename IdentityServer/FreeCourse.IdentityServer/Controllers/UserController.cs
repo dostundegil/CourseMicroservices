@@ -29,7 +29,7 @@ namespace FreeCourse.IdentityServer.Controllers
 
             if(!result.Succeeded)
             {
-                return BadRequest(Response<NoContent>.Fail(result.Errors.Select(x=>x.Description).ToList(),400));
+                return BadRequest(Response<NoContent>.Fail(result.Errors.Select(x=>x.Description).ToList(),400)); 
             }
 
             return NoContent();
