@@ -13,7 +13,7 @@ using static IdentityServer4.IdentityServerConstants;
 namespace FreeCourse.IdentityServer.Controllers
 {
     [Authorize(LocalApi.PolicyName)]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class UserController : ControllerBase
     {
