@@ -19,6 +19,12 @@ namespace FreeCourse.IdentityServer.Controllers
     {
 
         private readonly UserManager<ApplicationUser> _userManager;
+
+        public UserController(UserManager<ApplicationUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
         [HttpPost]
 
         public async Task<IActionResult> SingUp(SignUpDto signUp)
