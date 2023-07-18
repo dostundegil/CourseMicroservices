@@ -1,4 +1,5 @@
-﻿using FreeCourse.Services.Catalog.Services;
+﻿using FreeCourse.Services.Catalog.Dtos;
+using FreeCourse.Services.Catalog.Services;
 using FreeCourse.Shared.ControllerBases;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,7 @@ namespace FreeCourse.Services.Catalog.Controllers
         {
             _categoryService = categoryService;
         }
-        //Added GetAll metgod to CategiroesController
+        //Added GetById method to CategiroesController
         public async Task<IActionResult> GetAll()
         {
             var categories = await _categoryService.GetAllAsync();
@@ -30,6 +31,12 @@ namespace FreeCourse.Services.Catalog.Controllers
             return CreateActionResultInstance(category);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Create(CategoryDto categoryDto)
+        {
+            var response = await _categoryService.CreateAsync(categoryDto);
+            return CreateActionResultInstance(response);
+        }
 
     }
 }
