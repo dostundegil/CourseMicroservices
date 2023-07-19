@@ -59,7 +59,7 @@ namespace FreeCourse.IdentityServer.Controllers
 
             if (user == null) return BadRequest();
 
-            return Ok(new { userId = user.Id, UserName=user.UserName, City=user.City});
+            return Ok(new { userId = user.Id, UserName=user.UserName,Email=user.Email, City=user.City});
 
         }
     }
