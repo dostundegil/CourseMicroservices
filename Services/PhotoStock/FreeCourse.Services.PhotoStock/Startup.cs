@@ -42,7 +42,7 @@ namespace FreeCourse.Services.PhotoStock
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FreeCourse.Services.PhotoStock v1"));
             }
-
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseAuthorization();
