@@ -30,6 +30,7 @@ namespace FreeCourse.Services.Basket
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpContextAccessor();
+            services.AddScoped<IBasketService, BasketService>();
             services.AddScoped<ISharedIdentityService, SharedIdentityService>();
             services.Configure<RedisSettings>(Configuration.GetSection("RedisSettings"));
             services.AddSingleton<RedisService>(sp =>
