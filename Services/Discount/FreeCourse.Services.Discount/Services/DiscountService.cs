@@ -17,12 +17,14 @@ namespace FreeCourse.Services.Discount.Services
         public DiscountService(IConfiguration configration)
         {
             _configration = configration;
-            _dbConnection = new NpgsqlConnection(_configration.GetConnectionString("PostgreSql")); 
+            _dbConnection = new NpgsqlConnection(_configration.GetConnectionString("PostgreSql"));
         }
 
-        public Task<Response<NoContent>> Delete(int id)
+        public async Task<Response<NoContent>> Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var status = await _dbConnection.ExecuteAsync("DELETE FROM discount WHERE id = @Id", new { Id = id });
+
+            return status > 0 ? Response<NoContent>.Success(204) : Response<NoContent>.Fail("Discount not found", 404);
         }
 
         public async Task<Response<List<Models.Discount>>> GetAll()
@@ -33,12 +35,22 @@ namespace FreeCourse.Services.Discount.Services
 
         public async Task<Response<Models.Discount>> GetByCodeAndUser(string code, string userId)
         {
-            throw new System.NotImplementedException();
+            var discounts = await _dbConnection.QueryAsync<Models.Discount>("SELECT * FROM discount WHERE userid=@UserId and code = @Code", new { UserId = userId, Code = code });
+
+            var hasDiscount = discounts.FirstOrDefault();
+
+            return hasDiscount == null ? Response<Models.Discount>.Fail("Discount not found", 404) : Response<Models.Discount>.Success(hasDiscount, 200);
+
+            //if (hasDiscount == null)
+            //{
+            //    return Response<Models.Discount>.Fail("Discount not found", 404);
+            //}
+            //return Response<Models.Discount>.Success(hasDiscount, 200);
         }
 
         public async Task<Response<Models.Discount>> GetById(string id)
         {
-            var discount = (await _dbConnection.QueryAsync<Models.Discount>("select * from discount where id = @Id", new { Id= id })).SingleOrDefault();
+            var discount = (await _dbConnection.QueryAsync<Models.Discount>("SELECT * FROM discount WHERE id = @Id", new { Id = id })).SingleOrDefault();
 
             if (discount == null)
             {
@@ -52,7 +64,7 @@ namespace FreeCourse.Services.Discount.Services
         {
             var saveStatus = await _dbConnection.ExecuteAsync("INSERT INTO discount (userid,rate,code) VALUES(@UserId,@Rate,@Code)", discount);
 
-            if(saveStatus > 0)
+            if (saveStatus > 0)
             {
                 return Response<NoContent>.Success(204);
             }
@@ -68,7 +80,7 @@ namespace FreeCourse.Services.Discount.Services
             {
                 return Response<NoContent>.Success(204);
             }
-            return Response<NoContent>.Fail("An error occurred while updating", 500);
+            return Response<NoContent>.Fail("Discount not found", 404);
         }
     }
 }
