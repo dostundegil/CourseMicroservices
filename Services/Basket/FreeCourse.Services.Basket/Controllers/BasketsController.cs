@@ -31,12 +31,14 @@ namespace FreeCourse.Services.Basket.Controllers
         public async Task<IActionResult> SaveOrUpdateBasket(BasketDto basketDto)
         {
             var response = await _basketService.SaveOrUpdate(basketDto);
+
             return CreateActionResultInstance(response);
         }
 
         [HttpDelete]
-        public async Task<IActionResult> SaveOrUpdateBasket()
-        { 
+        public async Task<IActionResult> DeleteBasket()
+
+        {
             return CreateActionResultInstance(await _basketService.Delete(_sharedIdentityService.GetUserId));
         }
     }
