@@ -74,12 +74,13 @@ namespace FreeCourse.Services.Discount.Services
 
         public async Task<Response<NoContent>> Update(Models.Discount discount)
         {
-            var status = await _dbConnection.ExecuteAsync("UPDATE discount SET userid=@UserId, code = @Code, rate = @Rate where id = @id", new { Id = discount.Id, UserId = discount.UserId, Code = discount.Code, Rate = discount.Rate });
+            var status = await _dbConnection.ExecuteAsync("update discount set userid=@UserId, code=@Code, rate=@Rate where id=@Id", new { Id = discount.Id, UserId = discount.UserId, Code = discount.Code, Rate = discount.Rate });
 
             if (status > 0)
             {
                 return Response<NoContent>.Success(204);
             }
+
             return Response<NoContent>.Fail("Discount not found", 404);
         }
     }
