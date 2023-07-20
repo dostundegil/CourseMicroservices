@@ -48,7 +48,7 @@ namespace FreeCourse.Services.Discount.Services
             //return Response<Models.Discount>.Success(hasDiscount, 200);
         }
 
-        public async Task<Response<Models.Discount>> GetById(string id)
+        public async Task<Response<Models.Discount>> GetById(int id)
         {
             var discount = (await _dbConnection.QueryAsync<Models.Discount>("SELECT * FROM discount WHERE id = @Id", new { Id = id })).SingleOrDefault();
 
