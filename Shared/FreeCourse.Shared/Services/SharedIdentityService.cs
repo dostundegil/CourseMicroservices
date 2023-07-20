@@ -8,15 +8,14 @@ namespace FreeCourse.Shared.Services
 {
     public class SharedIdentityService : ISharedIdentityService
     {
-        private IHttpContextAccessor _contextAccessor;
+        private IHttpContextAccessor _httpContextAccessor;
 
-        public SharedIdentityService(IHttpContextAccessor contextAccessor)
+        public SharedIdentityService(IHttpContextAccessor httpContextAccessor)
         {
-            _contextAccessor = contextAccessor;
+            _httpContextAccessor = httpContextAccessor;
         }
 
-        public string GetUserId => _contextAccessor.HttpContext.User.FindFirst("sub").Value;
+        public string GetUserId => _httpContextAccessor.HttpContext.User.FindFirst("sub").Value;
     }
-
 
 }
