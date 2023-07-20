@@ -1,5 +1,6 @@
 ﻿using FreeCourse.Services.Basket.Dtos;
 using FreeCourse.Shared.Dtos;
+using System;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -24,12 +25,12 @@ namespace FreeCourse.Services.Basket.Services
         {
             var existBasket = await _redisService.GetDb().StringGetAsync(userId);
 
-            if (string.IsNullOrEmpty(existBasket))
+            if (String.IsNullOrEmpty(existBasket))
             {
                 return Response<BasketDto>.Fail("Basket not found", 404);
             }
 
-            return Response<BasketDto>.Success(JsonSerializer.Deserialize<BasketDto>(existBasket), 204);
+            return Response<BasketDto>.Success(JsonSerializer.Deserialize<BasketDto>(existBasket), 200);
         }
 
         public async Task<Response<bool>> SaveOrUpdate(BasketDto basketDto)
