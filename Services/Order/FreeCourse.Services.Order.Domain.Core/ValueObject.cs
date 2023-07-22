@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FreeCourse.Services.Order.Domain.Core
 {
-    public class ValueObject
+    public abstract class ValueObject
     {
         protected static bool EqualOperator(ValueObject left, ValueObject right)
         {
