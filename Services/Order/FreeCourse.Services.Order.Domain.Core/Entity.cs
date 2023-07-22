@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FreeCourse.Services.Order.Domain.Core
 {
-    public class Entity
+    public abstract class Entity
     {
         private int? _requestedHashCode;
         private int _Id;
