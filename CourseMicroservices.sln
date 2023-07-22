@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.Order.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.Order.Domain.Core", "Services\Order\FreeCourse.Services.Order.Domain.Core\FreeCourse.Services.Order.Domain.Core.csproj", "{A8520449-3833-4B3D-82D1-143651062FFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.Order.Infrastructure", "Services\Order\FreeCourse.Services.Order.Infrastructure\FreeCourse.Services.Order.Infrastructure.csproj", "{7D3CB7E8-0816-42AB-9653-40DF112DC0E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +92,10 @@ Global
 		{A8520449-3833-4B3D-82D1-143651062FFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8520449-3833-4B3D-82D1-143651062FFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8520449-3833-4B3D-82D1-143651062FFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D3CB7E8-0816-42AB-9653-40DF112DC0E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D3CB7E8-0816-42AB-9653-40DF112DC0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D3CB7E8-0816-42AB-9653-40DF112DC0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D3CB7E8-0816-42AB-9653-40DF112DC0E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -110,6 +116,7 @@ Global
 		{25791D4D-BDBB-4783-883E-A5ECDE4E4E4F} = {9007BE41-8761-4627-9AD8-2EBBF6CF60B3}
 		{AF291DE3-FDE9-4F02-8940-213069B70212} = {9007BE41-8761-4627-9AD8-2EBBF6CF60B3}
 		{A8520449-3833-4B3D-82D1-143651062FFA} = {9007BE41-8761-4627-9AD8-2EBBF6CF60B3}
+		{7D3CB7E8-0816-42AB-9653-40DF112DC0E4} = {9007BE41-8761-4627-9AD8-2EBBF6CF60B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {26200C69-5962-4387-8A0F-22664F544A2E}
