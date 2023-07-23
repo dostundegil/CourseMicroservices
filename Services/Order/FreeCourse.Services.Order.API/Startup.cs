@@ -49,9 +49,11 @@ namespace FreeCourse.Services.Order.API
                     configure.MigrationsAssembly("FreeCourse.Services.Order.Infrastructure");
                 });
             });
-            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+
             services.AddHttpContextAccessor();
-            services.AddMediatR(typeof(FreeCourse.Services.Order.Application.Handlers.CreateOrderCommandHandler).Assembly);
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+
+            services.AddMediatR(typeof(Application.Handlers.CreateOrderCommandHandler).Assembly);
 
             services.AddControllers(opt =>
             {
@@ -74,6 +76,7 @@ namespace FreeCourse.Services.Order.API
             }
 
             app.UseRouting();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
