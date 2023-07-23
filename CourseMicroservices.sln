@@ -50,6 +50,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FakePayment", "FakePayment"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.FakePayment", "Services\FakePayment\FreeCourse.Services.FakePayment\FreeCourse.Services.FakePayment.csproj", "{D0BBCC9E-615F-43F6-9973-C3767F515703}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{794B5F70-1080-462C-8791-27FF56032066}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Gateway", "Gateways\FreeCourse.Gateway\FreeCourse.Gateway.csproj", "{F4C523EB-E015-49AE-88BF-C23684C19D0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +108,10 @@ Global
 		{D0BBCC9E-615F-43F6-9973-C3767F515703}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0BBCC9E-615F-43F6-9973-C3767F515703}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0BBCC9E-615F-43F6-9973-C3767F515703}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4C523EB-E015-49AE-88BF-C23684C19D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4C523EB-E015-49AE-88BF-C23684C19D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4C523EB-E015-49AE-88BF-C23684C19D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4C523EB-E015-49AE-88BF-C23684C19D0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -127,6 +135,7 @@ Global
 		{7D3CB7E8-0816-42AB-9653-40DF112DC0E4} = {9007BE41-8761-4627-9AD8-2EBBF6CF60B3}
 		{32939D9F-A142-4FBD-8BBA-BA581050EA58} = {849B6B77-40F2-4758-939C-D759E8AF30AE}
 		{D0BBCC9E-615F-43F6-9973-C3767F515703} = {32939D9F-A142-4FBD-8BBA-BA581050EA58}
+		{F4C523EB-E015-49AE-88BF-C23684C19D0F} = {794B5F70-1080-462C-8791-27FF56032066}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {26200C69-5962-4387-8A0F-22664F544A2E}
