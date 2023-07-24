@@ -1,3 +1,4 @@
+using FreeCourse.Shared.Services;
 using FreeCourse.Web.Handler;
 using FreeCourse.Web.Models;
 using FreeCourse.Web.Services;
@@ -29,6 +30,8 @@ namespace FreeCourse.Web
         {
             services.AddHttpContextAccessor();
             services.AddHttpClient<IIdentityService, IdentityService>();
+
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 
             services.AddScoped<ResourceOwnerPasswordTokenHandler>();
 

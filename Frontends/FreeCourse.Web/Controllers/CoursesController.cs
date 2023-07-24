@@ -1,12 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FreeCourse.Shared.Services;
+using FreeCourse.Web.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace FreeCourse.Web.Controllers
 {
+    [Authorize]
     public class CoursesController : Controller
     {
-        public IActionResult Index()
+        private readonly ICatalogService _catalogService;
+        private readonly ISharedIdentityService _sharedIdentityService;
+
+        public CoursesController(ICatalogService catalogService, ISharedIdentityService sharedIdentityService)
         {
-            return View();
+            _catalogService = catalogService;
+            _sharedIdentityService = sharedIdentityService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            return View(await _catalogService.GetAllCourseByUserIdAsync(_sharedIdentityService.GetUserId));
         }
     }
 }
