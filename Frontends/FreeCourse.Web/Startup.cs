@@ -29,7 +29,7 @@ namespace FreeCourse.Web
         {
             services.AddHttpContextAccessor();
             services.AddHttpClient<IIdentityService, IdentityService>();
-
+            services.AddScoped<ResourceOwnerPasswordTokenHandler>();
             services.Configure<ClientSettings>(Configuration.GetSection("ClientSettings"));
 
             services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
@@ -46,7 +46,7 @@ namespace FreeCourse.Web
             services.AddHttpClient<IUserService, UserService>(opt =>
             {
                 opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
-            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>(); 
 
             services.AddControllersWithViews();
         }
