@@ -24,7 +24,7 @@ namespace FreeCourse.Shared.Dtos
 
         public static Response<T> Success(int statusCode)
         {
-            return new Response<T> { Data = default(T), StatusCode = statusCode, IsSuccessful = false };
+            return new Response<T> { Data = default(T), StatusCode = statusCode, IsSuccessful = true };
         }
 
         public static Response<T> Fail(List<string> errors, int statuscode)
