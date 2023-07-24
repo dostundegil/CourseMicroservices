@@ -32,7 +32,7 @@ namespace FreeCourse.Web
             services.Configure<ClientSettings>(Configuration.GetSection("ClientSettings"));
 
             services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
-
+            var serviceApiSettings = Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opt =>
                 {
@@ -41,6 +41,11 @@ namespace FreeCourse.Web
                     opt.SlidingExpiration = true;
                     opt.Cookie.Name = "webcookie";
                 });
+
+            services.AddHttpClient<IUserService, UserService>(opt =>
+            {
+                opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
+            });
 
             services.AddControllersWithViews();
         }
