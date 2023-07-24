@@ -29,11 +29,12 @@ namespace FreeCourse.Web
         {
             services.AddHttpContextAccessor();
             services.AddHttpClient<IIdentityService, IdentityService>();
-            services.AddScoped<ResourceOwnerPasswordTokenHandler>();
-            services.Configure<ClientSettings>(Configuration.GetSection("ClientSettings"));
 
+            services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+
+            services.Configure<ClientSettings>(Configuration.GetSection("ClientSettings"));
             services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
-            var serviceApiSettings = Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opt =>
                 {
@@ -43,10 +44,17 @@ namespace FreeCourse.Web
                     opt.Cookie.Name = "webcookie";
                 });
 
+            var serviceApiSettings = Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
+
             services.AddHttpClient<IUserService, UserService>(opt =>
             {
                 opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
-            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>(); 
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            services.AddHttpClient<ICatalogService, CatalogService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
+            });
 
             services.AddControllersWithViews();
         }
