@@ -1,6 +1,8 @@
 ﻿using FreeCourse.Web.Exceptions;
 using FreeCourse.Web.Services.Interfaces;
-using System.Net;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -23,7 +25,7 @@ namespace FreeCourse.Web.Handler
 
             var response = await base.SendAsync(request, cancellationToken);
 
-            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
                 throw new UnAuthorizeException();
             }

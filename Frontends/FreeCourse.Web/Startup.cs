@@ -28,12 +28,9 @@ namespace FreeCourse.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAccessTokenManagement();
+
             services.AddHttpContextAccessor();
-            services.AddHttpClient<IIdentityService, IdentityService>();
-
-            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
-
-            services.AddScoped<ResourceOwnerPasswordTokenHandler>();
 
             services.Configure<ClientSettings>(Configuration.GetSection("ClientSettings"));
             services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
@@ -48,8 +45,13 @@ namespace FreeCourse.Web
                 });
 
             var serviceApiSettings = Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
+
             services.AddScoped<ClientCredentialTokenHandler>();
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+            services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+
             services.AddHttpClient<IClientCredentialTokenService,ClientCredentialTokenService>();
+            services.AddHttpClient<IIdentityService, IdentityService>();
 
             services.AddHttpClient<IUserService, UserService>(opt =>
             {
