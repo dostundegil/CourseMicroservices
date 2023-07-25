@@ -48,7 +48,7 @@ namespace FreeCourse.Web
                 });
 
             var serviceApiSettings = Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
-
+            services.AddScoped<ClientCredentialTokenHandler>();
             services.AddHttpClient<IClientCredentialTokenService,ClientCredentialTokenService>();
 
             services.AddHttpClient<IUserService, UserService>(opt =>
@@ -59,7 +59,7 @@ namespace FreeCourse.Web
             services.AddHttpClient<ICatalogService, CatalogService>(opt =>
             {
                 opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
             services.AddControllersWithViews();
         }
