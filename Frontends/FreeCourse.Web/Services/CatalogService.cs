@@ -27,7 +27,7 @@ namespace FreeCourse.Web.Services
 
         public async Task<bool> DeleteCourseAsync(string courseId)
         {
-            var response = await _client.DeleteAsync($"courses /{courseId}");
+            var response = await _client.DeleteAsync($"course/{courseId}");
 
             return response.IsSuccessStatusCode;
         }
@@ -50,7 +50,7 @@ namespace FreeCourse.Web.Services
         {
 
             //http://localhost:5000/services/catalog/courses
-            var response = await _client.GetAsync("courses");
+            var response = await _client.GetAsync("course");
             if (!response.IsSuccessStatusCode)
             {
                 return null;
@@ -79,7 +79,7 @@ namespace FreeCourse.Web.Services
 
         public async Task<CourseViewModel> GetByCourseIdAsync(string courseId)
         {
-            var response = await _client.GetAsync($"courses/{courseId}");
+            var response = await _client.GetAsync($"course/{courseId}");
             if (!response.IsSuccessStatusCode)
             {
                 return null;
@@ -92,7 +92,7 @@ namespace FreeCourse.Web.Services
 
         public async Task<bool> UpdateCourseAsync(CourseUpdateInput courseUpdateInput)
         {
-            var response = await _client.PutAsJsonAsync<CourseUpdateInput>("courses", courseUpdateInput);
+            var response = await _client.PutAsJsonAsync<CourseUpdateInput>("course", courseUpdateInput);
 
             return response.IsSuccessStatusCode;
         }
