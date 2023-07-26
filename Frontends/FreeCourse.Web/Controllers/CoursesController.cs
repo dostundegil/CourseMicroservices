@@ -62,7 +62,7 @@ namespace FreeCourse.Web.Controllers
             {
                 RedirectToAction(nameof(Index));
             }
-            ViewBag.categoryList = new SelectList(categories, "Id", "Name");
+            ViewBag.categoryList = new SelectList(categories, "Id", "Name", course.Id);
             CourseUpdateInput courseUpdateInput = new()
             {
                 Id = course.Id,
@@ -76,6 +76,21 @@ namespace FreeCourse.Web.Controllers
             };
 
             return View(courseUpdateInput);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(CourseUpdateInput courseUpdateInput)
+        {
+            var categories = await _catalogService.GetAllCategoryAsync();
+            ViewBag.categoryList = new SelectList(categories, "Id", "Name", courseUpdateInput.Id);
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            await _catalogService.UpdateCourseAsync(courseUpdateInput);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
