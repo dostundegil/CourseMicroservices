@@ -65,7 +65,7 @@ namespace FreeCourse.Web
 
             services.AddHttpClient<IPhotoStockService, PhotoStockService>(opt =>
             {
-                opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
+                opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.PhotoStock.Path}");
             }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
             services.AddControllersWithViews();
