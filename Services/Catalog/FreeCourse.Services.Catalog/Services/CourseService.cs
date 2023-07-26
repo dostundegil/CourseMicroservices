@@ -101,13 +101,16 @@ namespace FreeCourse.Services.Catalog.Services
 
         public async Task<Response<NoContent>> DeleteAsync(string id)
         {
-            var result = await _courseCollection.DeleteOneAsync(id);
+            var result = await _courseCollection.DeleteOneAsync(x => x.Id == id);
 
             if (result.DeletedCount > 0)
             {
                 return Response<NoContent>.Success(204);
             }
-            return Response<NoContent>.Fail("Course not found", 404);
+            else
+            {
+                return Response<NoContent>.Fail("Course not found", 404);
+            }
         }
     }
 }
