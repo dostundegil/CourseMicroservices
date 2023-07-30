@@ -10,5 +10,8 @@ namespace FreeCourse.Web.Services.Interfaces
         Task<BasketViewModel> Get();
         Task<bool> Delete();
         Task AddBasketItem(BasketItemViewModel basketItemViewModel);
+        Task<bool> RemoveBasketItem(string courseID);
+        Task<bool> ApplyDiscount(string discountCode);
+        Task<bool> CancelApplyDiscount();
     }
 }
