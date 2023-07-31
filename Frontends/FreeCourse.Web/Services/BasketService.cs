@@ -19,11 +19,11 @@ namespace FreeCourse.Web.Services
 
         public async Task AddBasketItem(BasketItemViewModel basketItemViewModel)
         {
-
             var basket = await Get();
+
             if (basket != null)
             {
-                if (basket.BasketItems.Any(x => x.CourseId == basketItemViewModel.CourseId))
+                if (!basket.BasketItems.Any(x => x.CourseId == basketItemViewModel.CourseId))
                 {
                     basket.BasketItems.Add(basketItemViewModel);
                 }
@@ -31,6 +31,7 @@ namespace FreeCourse.Web.Services
             else
             {
                 basket = new BasketViewModel();
+
                 basket.BasketItems.Add(basketItemViewModel);
             }
 
@@ -63,6 +64,7 @@ namespace FreeCourse.Web.Services
                 return null;
             }
             var basketViewModel = await response.Content.ReadFromJsonAsync<Response<BasketViewModel>>();
+
             return basketViewModel.Data;
         }
 
@@ -71,9 +73,11 @@ namespace FreeCourse.Web.Services
             var basket = await Get();
 
             if (basket == null)
+
             {
                 return false;
             }
+
             var deleteBasketItem = basket.BasketItems.FirstOrDefault(x => x.CourseId == courseID);
 
             if (deleteBasketItem == null)

@@ -21,11 +21,14 @@
         }
             <div class="col-lg-4 mb-4">
                 <div class="card">
+                    <div class="item">
+                        <span class="notify-badge">@item.Price ₺</span>
                     <img src="@item.StockPictureUrl" alt="" class="card-img-top">
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">@item.Name <span class="badge badge-primary">@item.Price ₺</span></h5>
+                        <h5 class="card-title">@item.Name <span class="badge badge-primary">@item.Category.Name</span></h5>
                         <p class="card-text">@item.ShortDescription</p>
-                        <a asp-route-id="@item.Id" asp-controller="Home" asp-action="Detail" class="btn btn-outline-success btn-sm">Detaylar</a>
+                        <a asp-route-id="@item.Id" asp-controller="Home" asp-action="Detail" class="btn btn-success">Detaylar</a>
                     </div>
                 </div>
             </div>
