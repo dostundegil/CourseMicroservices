@@ -8,16 +8,13 @@ namespace FreeCourse.Web.Models.Catalogs
     {
         public string Id { get; set; }
 
-        [Required]
         [Display(Name = "Kurs İsmi")]
         public string Name { get; set; }
 
-        [Required]
         [Display(Name = "Kurs Açıklama")]
         public string Description { get; set; }
 
 
-        [Required]
         [Display(Name = "Kurs Fiyatı")]
         public decimal Price { get; set; }
         public string UserId { get; set; }
@@ -25,7 +22,6 @@ namespace FreeCourse.Web.Models.Catalogs
         public FeatureViewModel Feature { get; set; }
 
 
-        [Required]
         [Display(Name = "Kurs Kategorisi")]
         public string CategoryId { get; set; }
 
