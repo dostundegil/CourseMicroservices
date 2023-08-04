@@ -27,12 +27,12 @@ namespace FreeCourse.Services.Order.Application.Handlers
         {
             var orders = await _context.Orders.Include(x => x.OrderItems).Where(x => x.BuyerId == request.UserId).ToListAsync();
 
-            if (orders.Any())
+            if (!orders.Any())
             {
                 return Response<List<OrderDto>>.Success(new List<OrderDto>(), 200);
             }
 
-            var ordersDto=ObjectMapper.Mapper.Map<List<OrderDto>>(orders);
+            var ordersDto = ObjectMapper.Mapper.Map<List<OrderDto>>(orders);
 
             return Response<List<OrderDto>>.Success(ordersDto, 200);
         }
