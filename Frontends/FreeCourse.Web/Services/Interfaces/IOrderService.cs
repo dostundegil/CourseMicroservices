@@ -11,7 +11,7 @@ namespace FreeCourse.Web.Services.Interfaces
         Task<OrderCreatedViewModel> CreateOrder(CheckoutInfoInput checkoutInfoInput);
 
         //asenkron
-        Task SuspendOrder(CheckoutInfoInput checkoutInfoInput);
+        Task<OrderSuspendViewModel> SuspendOrder(CheckoutInfoInput checkoutInfoInput);
 
         Task<List<OrderViewModel>> GetOrder();
     }
