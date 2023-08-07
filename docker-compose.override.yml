@@ -119,7 +119,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - IdentityServerURL=http://identityserver.api
       - RabbitMQUrl=rabbitmq
-      - ConnectionStrings=DefaultConnection="Server=orderdb,1444;Database=OrderDb; User=sa; Password=kaan2000sv"
+      - "ConnectionStrings:DefaultConnection=Server=orderdb,1433;Database=OrderDb; User=sa; Password=kaan2000sv"
     ports:
       - "5015:80"
     depends_on:
